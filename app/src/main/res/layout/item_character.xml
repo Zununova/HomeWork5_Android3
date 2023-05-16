@@ -14,7 +14,7 @@
 
         <ImageView
             android:id="@+id/image_view_hero"
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent" />
 
         <LinearLayout
@@ -39,7 +39,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="15dp"
-                android:textSize="10sp" >
+                android:textSize="10sp">
+
                 <TextView
                     android:id="@+id/item_character_status"
                     android:layout_width="wrap_content"
@@ -47,12 +48,14 @@
                     android:text="status"
                     android:textColor="@color/white"
                     android:textSize="10sp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=" - "
                     android:textColor="@color/white"
                     android:textSize="10sp" />
+
                 <TextView
                     android:id="@+id/item_character_species"
                     android:layout_width="wrap_content"
@@ -94,12 +97,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="15dp"
+                android:layout_marginBottom="15dp"
                 android:text="who is this"
                 android:textColor="@color/white"
                 android:textSize="10sp" />
 
         </LinearLayout>
-    </LinearLayout>
 
+    </LinearLayout>
 
 </androidx.cardview.widget.CardView>

@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.homework2_android3.R
 import com.example.homework2_android3.databinding.FragmentCharacterBinding
 import com.example.homework2_android3.ui.adapters.CharacterAdapter
 
