@@ -2,6 +2,7 @@ package com.example.homework2_android3.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -9,8 +10,7 @@ import com.bumptech.glide.Glide
 import com.example.homework2_android3.databinding.ItemCharacterBinding
 import com.example.homework2_android3.models.CharacterModel
 
-class CharacterAdapter :
-    ListAdapter<CharacterModel, CharacterAdapter.ViewHolder>(DiffUtilCallback()) {
+class CharacterAdapter : PagingDataAdapter<CharacterModel, CharacterAdapter.ViewHolder>(DiffUtilCallback()) {
 
     class ViewHolder(private val binding: ItemCharacterBinding) :
         RecyclerView.ViewHolder(binding.root) {
