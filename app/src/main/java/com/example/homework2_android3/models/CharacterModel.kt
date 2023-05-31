@@ -1,7 +1,7 @@
 package com.example.homework2_android3.models
 
 import com.google.gson.annotations.SerializedName
-import java.util.Objects
+import java.util.*
 
 data class CharacterModel(
 
@@ -22,8 +22,5 @@ data class CharacterModel(
 
     @SerializedName("type")
     val type: String,
-
-    @SerializedName("location")
-    val location: Objects
 
 )

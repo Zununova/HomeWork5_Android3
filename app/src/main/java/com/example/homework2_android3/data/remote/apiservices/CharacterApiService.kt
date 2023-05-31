@@ -4,6 +4,7 @@ import com.example.homework2_android3.models.CharacterModel
 import com.example.homework2_android3.models.RickAndMortyResponse
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface CharacterApiService {
@@ -12,4 +13,9 @@ interface CharacterApiService {
     suspend fun fetchCharacters(
         @Query("page") page: Int
     ): RickAndMortyResponse<CharacterModel>
+
+    @GET("api/character/{id}")
+    fun fetchIdCharacter(
+        @Path("id") id: Int
+    ): Call<CharacterModel>
 }

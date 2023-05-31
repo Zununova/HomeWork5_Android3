@@ -3,17 +3,22 @@ package com.example.homework2_android3.ui.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.homework2_android3.databinding.ItemLocationBinding
 import com.example.homework2_android3.models.LocationModel
 
-class LocationAdapter() :
+class LocationAdapter(private val onItemClick: (id: Int) -> Unit) :
     PagingDataAdapter<LocationModel, LocationAdapter.ViewHolder>(DiffUtilCallback()) {
 
-    class ViewHolder(private val binding: ItemLocationBinding) :
+    inner class ViewHolder(private val binding: ItemLocationBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            itemView.setOnClickListener {
+                onItemClick(absoluteAdapterPosition + 1)
+            }
+        }
 
         fun onBind(locationModel: LocationModel?) {
             binding.textViewLocation.text = locationModel?.name

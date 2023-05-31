@@ -1,28 +1,31 @@
 package com.example.homework2_android3.ui.fragments.location
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.homework2_android3.R
 import com.example.homework2_android3.baseFragment.BaseFragment
 import com.example.homework2_android3.databinding.FragmentLocationBinding
+import com.example.homework2_android3.ui.activity.MainActivity
 import com.example.homework2_android3.ui.adapters.LocationAdapter
 import kotlinx.coroutines.launch
 
 class LocationFragment :
-    BaseFragment<FragmentLocationBinding, LocationViewModel>(R.layout.fragment_location) {
+    BaseFragment<FragmentLocationBinding, LocationSharedViewModel>(R.layout.fragment_location) {
 
-    private val locationAdapter = LocationAdapter()
+    private val locationAdapter = LocationAdapter(this::onItemCLick)
+
+    private fun onItemCLick(id: Int) {
+        findNavController().navigate(
+            LocationFragmentDirections.actionLocationFragmentToLocationDetailFragment(id)
+        )
+    }
 
     override val binding by viewBinding(FragmentLocationBinding::bind)
-    override val viewModel: LocationViewModel by viewModels()
+    override val viewModel: LocationSharedViewModel by viewModels()
 
     override fun initialize() {
         binding.locationRecyclerView.apply {
@@ -31,13 +34,25 @@ class LocationFragment :
         }
     }
 
+    override fun setupListener() {
+        super.setupListener()
+        bottomNavigationSelected()
+    }
+
     override fun setupObserves() {
         super.setupObserves()
 
         lifecycleScope.launch {
-            viewModel.fetchLocation().collect{
+            viewModel.fetchLocation().collect {
                 locationAdapter.submitData(it)
             }
+        }
+    }
+
+    override fun bottomNavigationSelected() {
+        super.bottomNavigationSelected()
+        (requireActivity() as MainActivity).setOnItemReselectedListener {
+            binding.locationRecyclerView.smoothScrollToPosition(0)
         }
     }
 }

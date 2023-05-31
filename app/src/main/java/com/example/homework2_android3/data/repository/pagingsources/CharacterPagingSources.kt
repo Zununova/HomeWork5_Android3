@@ -12,6 +12,8 @@ private const val CHARACTER_STARTING_PAGE_INDEX = 1
 
 class CharacterPagingSources(private var service: CharacterApiService) : PagingSource<
         Int, CharacterModel>() {
+
+
     override fun getRefreshKey(state: PagingState<Int, CharacterModel>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
             val anchorPage = state.closestPageToPosition(anchorPosition)

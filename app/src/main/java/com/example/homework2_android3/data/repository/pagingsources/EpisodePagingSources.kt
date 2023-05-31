@@ -3,16 +3,14 @@ package com.example.homework2_android3.data.repository.pagingsources
 import android.net.Uri
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.example.homework2_android3.data.remote.apiservices.CharacterApiService
 import com.example.homework2_android3.data.remote.apiservices.EpisodeApiService
-import com.example.homework2_android3.models.CharacterModel
 import com.example.homework2_android3.models.EpisodeModel
 import retrofit2.HttpException
 import java.io.IOException
 
 private const val CHARACTER_STARTING_PAGE_INDEX = 1
 
-class EpisodePagingSources (private var service: EpisodeApiService) : PagingSource<
+class EpisodePagingSources(private var service: EpisodeApiService) : PagingSource<
         Int, EpisodeModel>() {
     override fun getRefreshKey(state: PagingState<Int, EpisodeModel>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
