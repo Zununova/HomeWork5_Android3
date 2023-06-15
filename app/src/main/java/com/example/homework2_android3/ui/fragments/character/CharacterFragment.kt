@@ -1,5 +1,6 @@
 package com.example.homework2_android3.ui.fragments.character
 
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -39,6 +40,7 @@ class CharacterFragment :
 
         lifecycleScope.launch {
             viewModel.fetchCharacters().collect {
+                Toast.makeText(requireContext(), it.toString() , Toast.LENGTH_SHORT).show()
                 characterAdapter.submitData(it)
             }
         }

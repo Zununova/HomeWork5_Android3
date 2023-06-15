@@ -41,6 +41,5 @@ class CharacterPagingSources(private var service: CharacterApiService) : PagingS
         } catch (exception: HttpException) {
             return LoadResult.Error(exception)
         }
-
     }
 }

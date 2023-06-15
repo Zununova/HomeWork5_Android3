@@ -15,5 +15,4 @@ data class EpisodeModel(
 
     @SerializedName("episode")
     val episode: String
-
 )

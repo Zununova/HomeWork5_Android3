@@ -18,7 +18,7 @@ class CharacterAdapter(private val onItemClick: (id: Int) -> Unit) :
 
         init {
             itemView.setOnClickListener {
-                onItemClick(absoluteAdapterPosition + 1)
+                onItemClick(adapterPosition)
             }
         }
 
